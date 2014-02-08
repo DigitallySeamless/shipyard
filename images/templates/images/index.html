@@ -63,36 +63,38 @@
     </div>
     <div class="panel-body">
         {% if images %}
-        <table class="table table-hover table-bordered">
-            <thead>
-                <tr>
-                    <th>{% trans 'ID' %}</th>
-                    <th>{% trans 'Repository' %}</th>
-                    <th>{% trans 'Host' %}</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for i in images %}
-                <tr>
-                    <td>{{i.image_id|slice:":12"}}</td>
-                    <td>{{i.repository}}</td>
-                    <td>{{i.host.name}}</td>
-                    <td>
-                        <div class="btn-group">
-                            <a href="#" data-toggle="dropdown">
-                                <span class="glyphicon glyphicon-cog"></span>
-                                <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu right">
-                                <li><a href="#" rel="tooltip" class="remove-image" data-url="{% url 'images.views.remove_image' host_id=i.host.id image_id=i.image_id %}">{% trans 'Remove Image' %}</a></li>
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th>{% trans 'ID' %}</th>
+                        <th>{% trans 'Repository' %}</th>
+                        <th>{% trans 'Host' %}</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in images %}
+                    <tr>
+                        <td>{{i.image_id|slice:":12"}}</td>
+                        <td>{{i.repository}}</td>
+                        <td>{{i.host.name}}</td>
+                        <td>
+                            <div class="btn-group">
+                                <a href="#" data-toggle="dropdown">
+                                    <span class="glyphicon glyphicon-cog"></span>
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu right">
+                                    <li><a href="#" rel="tooltip" class="remove-image" data-url="{% url 'images.views.remove_image' host_id=i.host.id image_id=i.image_id %}">{% trans 'Remove Image' %}</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
         {% else %}
         <div class="text-muted">{% trans 'No images' %}</div>
         {% endif %}
